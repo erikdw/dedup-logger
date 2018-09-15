@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <MarkerFilter marker="test" onMatch="DENY" onMismatch="ACCEPT"/>
+        </Console>
+        <!--Configuration for dedupFilter-->
+        <Console name="Console2" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <DedupFilter cacheSize= "3" threshold = "1" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <File name="File" fileName="./src/main/resources/dedup_worker.log"
+              immediateFlush="true" append="false">
+            <PatternLayout pattern="%m%n"/>
+            <!--<DedupFilter cacheSize= "3" threshold = "3" onMatch="ACCEPT" onMismatch="DENY"/>-->
+        </File>
+    </Appenders>
+    <Loggers>
+
+        <Root level="trace">
+            <AppenderRef ref= "File"/>
+            <!--<AppenderRef ref="Console"/>-->
+            <!--<AppenderRef ref="Console2"/>-->
+        </Root>
+
+
+    </Loggers>
+</Configuration>
+

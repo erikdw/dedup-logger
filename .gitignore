@@ -1,0 +1,11 @@
+*iml
+.DS_Store
+.idea
+.project
+bin
+target
+*.log
+*.iml
+
+!src/main/resources/input.log
+!src/main/resources/input_with_errors.log
